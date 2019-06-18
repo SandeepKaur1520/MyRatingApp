@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyRatingApp</string>
+    <string-array name="country_Array">
+        <item>India</item>
+        <item>England</item>
+        <item>Africa</item>
+        <item>USA</item>
+        <item>Kuwait</item>
+
+    </string-array>
+</resources>
