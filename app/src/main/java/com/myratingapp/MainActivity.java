@@ -169,8 +169,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         btnSubmit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 progressDialog = new ProgressDialog(view.getContext() , ProgressDialog.STYLE_SPINNER) ;
                 progressDialog.setCancelable(true);
                 progressDialog.setMessage("Loading .....");
