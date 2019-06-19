@@ -30,6 +30,8 @@ import android.widget.ToggleButton;
 
 import java.sql.BatchUpdateException;
 
+import static com.myratingapp.R.id.seekBar;
+
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     final String[] Storage = {"","","","","","","","",""};
     int progressDialogStatus =0;
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         final LinearLayout linearLayout = findViewById(R.id.descLayout);
         linearLayout.setVisibility(View.GONE);
         Switch switchbtn = findViewById(R.id.switchBtn);
-        Button btnSubmit = findViewById(R.id.btmSubmit);
+        Button btnSubmit = findViewById(R.id.btcmSubmit);
         int startYear= 2019 ,starthMonth = 06, startDay =20;
         final DatePickerDialog datePickerDialog = new DatePickerDialog(
                 MainActivity.this, MainActivity.this, startYear, starthMonth, startDay);
