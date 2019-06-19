@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -121,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
                     Toast.makeText(MainActivity.this,"True " + Boolean.toString(b), Toast.LENGTH_SHORT).show();
+
                 }
                 else{
                     Toast.makeText(MainActivity.this,"False "+ Boolean.toString(b), Toast.LENGTH_SHORT).show();
