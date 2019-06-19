@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 intent.putExtra("desc",desc.getText().toString());
                 linearLayout.setVisibility(View.GONE);
                 status[0] = true;
-                
+
                 startActivity(intent);
 
             }
