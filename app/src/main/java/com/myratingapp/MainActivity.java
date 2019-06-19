@@ -32,14 +32,14 @@ import java.sql.BatchUpdateException;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     final String[] Storage = {"","","","","","","","",""};
-    ProgressDialog progressDialog;
     int progressDialogStatus =0;
     long fileSize = 0;
-    Handler progressDialogHandler =new Handler();
+    ProgressDialog progressDialog;
+    final Handler progressDialogHandler =new Handler();
     //@SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+                super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SeekBar seekBar = findViewById(R.id.seekBar);
         final ProgressBar progressBar =findViewById(R.id.progressBar);
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         final DatePickerDialog datePickerDialog = new DatePickerDialog(
                 MainActivity.this, MainActivity.this, startYear, starthMonth, startDay);
        // DatePicker datePicker = findViewById(R.id.datePicker);
+      //  progressDialog.dismiss();
         final Boolean[] status = {false};
         final EditText desc = findViewById(R.id.edDesc);
 
@@ -169,7 +170,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             @Override
             public void onClick(View view) {
 
-                progressDialog = new ProgressDialog(view.getContext()) ;
+
+                progressDialog = new ProgressDialog(view.getContext() , ProgressDialog.STYLE_SPINNER) ;
                 progressDialog.setCancelable(true);
                 progressDialog.setMessage("Loading .....");
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -177,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 progressDialog.setMax(100);
                 progressDialogStatus = 0 ;
                 fileSize = 0;
-
+                progressDialog.show();
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -205,8 +207,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                         }
                     }
                 }).start();
-
-
                 Intent intent = new Intent(MainActivity.this,SecondAcitivity.class);
                 intent.putExtra("Rating",Storage[0]);
                 intent.putExtra("Date",Storage[1]);
