@@ -30,7 +30,6 @@ import android.widget.ToggleButton;
 
 import java.sql.BatchUpdateException;
 
-import static com.myratingapp.R.id.seekBar;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     final String[] Storage = {"","","","","","","","",""};
