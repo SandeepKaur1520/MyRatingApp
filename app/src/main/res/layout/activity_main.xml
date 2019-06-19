@@ -50,58 +50,11 @@
                 android:textSize="20sp"
                 android:layout_gravity="center"
                 />
-            <TextView
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnDtae"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Choose current date"
-                android:textSize="20sp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20sp"
-                android:textColor="#000"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Date"/>
-
-
-                <Spinner
-                    android:id="@+id/spinnerdate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                </Spinner>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Month"/>
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/spinnermonth">
-
-                </Spinner>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Year"/>
-
-                <Spinner
-                    android:id="@+id/spinneryear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                </Spinner>
-            </LinearLayout>
-
+                android:text="Choose Date"/>
 
 
 

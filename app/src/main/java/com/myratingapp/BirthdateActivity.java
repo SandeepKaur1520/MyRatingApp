@@ -12,11 +12,11 @@ public class BirthdateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_birthdate);
-        spinnerdate = findViewById(R.id.spinnerdate);
+        /*spinnerdate = findViewById(R.id.spinnerdate);
         spinneryear = findViewById(R.id.spinneryear);
         spinnermonth=findViewById(R.id.spinnermonth);
 
-      /*  spinnerdate.setOnItemSelectedListener(this );
+        spinnerdate.setOnItemSelectedListener(this );
         spinneryear.setOnItemSelectedListener(this);
         spinnermonth.setOnItemSelectedListener(this);
 
@@ -53,7 +53,7 @@ public class BirthdateActivity extends AppCompatActivity {
 
         finaldate = getIntent().getStringExtra("date");
 
-        builder = new AlertDialog.Builder(this);
-        */
+        builder = new AlertDialog.Builder(this);*/
+
     }
 }

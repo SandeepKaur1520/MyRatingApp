@@ -3,9 +3,11 @@ package com.myratingapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -26,10 +28,11 @@ import android.widget.ToggleButton;
 
 import java.sql.BatchUpdateException;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+    final String[] Storage = {"","","","","","","","",""};
     @SuppressLint("NewApi")
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -44,10 +47,22 @@ public class MainActivity extends AppCompatActivity {
         linearLayout.setVisibility(View.GONE);
         Switch switchbtn = findViewById(R.id.switchBtn);
         Button btnSubmit = findViewById(R.id.btmSubmit);
+        int startYear= 0 ,starthMonth = 0, startDay =0;
+        final DatePickerDialog datePickerDialog = new DatePickerDialog(
+                MainActivity.this, MainActivity.this, startYear, starthMonth, startDay);
        // DatePicker datePicker = findViewById(R.id.datePicker);
         final Boolean[] status = {false};
         final EditText desc = findViewById(R.id.edDesc);
-        final String[] Storage = {"","","","","","","","",""};
+
+        Button btnDate = findViewById(R.id.btnDtae);
+
+        btnDate.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    datePickerDialog.show();
+                }
+            });
+
      /*   datePicker.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
@@ -144,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
+        btnSubmit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,SecondAcitivity.class);
@@ -162,5 +177,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+        String date = ("Date:" +i2 +"Month: " +  i1 +"Year: "+i);
+        Storage[1]=date;
+        Toast.makeText(MainActivity.this,date, Toast.LENGTH_SHORT).show();
     }
 }
