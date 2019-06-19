@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         linearLayout.setVisibility(View.GONE);
         Switch switchbtn = findViewById(R.id.switchBtn);
         Button btnSubmit = findViewById(R.id.btmSubmit);
-        int startYear= 0 ,starthMonth = 0, startDay =0;
+        int startYear= 2019 ,starthMonth = 06, startDay =20;
         final DatePickerDialog datePickerDialog = new DatePickerDialog(
                 MainActivity.this, MainActivity.this, startYear, starthMonth, startDay);
        // DatePicker datePicker = findViewById(R.id.datePicker);
