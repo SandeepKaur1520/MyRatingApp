@@ -7,6 +7,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -31,9 +32,12 @@ import java.sql.BatchUpdateException;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     final String[] Storage = {"","","","","","","","",""};
-    @SuppressLint("NewApi")
+    ProgressDialog progressDialog;
+    int progressDialogStatus =0;
+    long fileSize = 0;
+    Handler progressDialogHandler =new Handler();
+    //@SuppressLint("NewApi")
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -164,6 +168,45 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         btnSubmit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                progressDialog = new ProgressDialog(view.getContext()) ;
+                progressDialog.setCancelable(true);
+                progressDialog.setMessage("Loading .....");
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDialog.setProgress(0);
+                progressDialog.setMax(100);
+                progressDialogStatus = 0 ;
+                fileSize = 0;
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (progressDialogStatus < 100) {
+                            progressDialogStatus = downloadFile();
+                            try {
+                                Thread.sleep(1000);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            final boolean post = progressDialogHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.setProgress(progressDialogStatus);
+                                }
+                            });
+                        }
+                        if(progressDialogStatus >=100){
+                            try {
+                                Thread.sleep(2000);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            progressDialog.dismiss();
+                        }
+                    }
+                }).start();
+
+
                 Intent intent = new Intent(MainActivity.this,SecondAcitivity.class);
                 intent.putExtra("Rating",Storage[0]);
                 intent.putExtra("Date",Storage[1]);
@@ -180,7 +223,34 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         });
 
     }
+    public  int downloadFile(){
+        while (fileSize <=1000000){
+            fileSize++;
+            if(fileSize == 100000){
+                return  10;
+            }
+            if(fileSize == 200000){
+                return  20;
+            }
+            if(fileSize == 200000){
+                return  20;
+            }
+            if(fileSize == 300000){
+                return  30;
+            }
+            if(fileSize == 400000) {
+                return 40;
+            }
+            if(fileSize == 500000){
+                return  50;}
+            if(fileSize == 600000){
+                return  60;}
+            if(fileSize == 700000){
+                return  70;}
 
+        }
+        return 100;
+    }
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
         String date = ("Date:" +i2 +"Month: " +  i1 +"Year: "+i);
